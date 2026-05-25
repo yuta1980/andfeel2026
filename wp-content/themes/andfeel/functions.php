@@ -458,14 +458,14 @@ function andfeel_works_data_html( $post ) {
  */
 function andfeel_works_data_save( $post_id ) {
     if ( ! isset( $_POST['andfeel_works_data_nonce_field'] ) ) return;
-    if ( ! wp_verify_nonce( $_POST['andfeel_works_data_nonce_field'], 'andfeel_works_data_nonce' ) ) return;
+    if ( ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['andfeel_works_data_nonce_field'] ) ), 'andfeel_works_data_nonce' ) ) return;
     if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
     if ( ! current_user_can( 'edit_post', $post_id ) ) return;
 
     $fields = array( 'works_location', 'works_year', 'works_structure', 'works_area' );
     foreach ( $fields as $key ) {
         if ( isset( $_POST[ $key ] ) ) {
-            update_post_meta( $post_id, $key, sanitize_text_field( $_POST[ $key ] ) );
+            update_post_meta( $post_id, $key, sanitize_text_field( wp_unslash( $_POST[ $key ] ) ) );
         }
     }
 }
@@ -589,7 +589,7 @@ function andfeel_works_gallery_html( $post ) {
  */
 function andfeel_works_gallery_save( $post_id ) {
     if ( ! isset( $_POST['andfeel_gallery_nonce_field'] ) ) return;
-    if ( ! wp_verify_nonce( $_POST['andfeel_gallery_nonce_field'], 'andfeel_gallery_nonce' ) ) return;
+    if ( ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['andfeel_gallery_nonce_field'] ) ), 'andfeel_gallery_nonce' ) ) return;
     if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
     if ( ! current_user_can( 'edit_post', $post_id ) ) return;
 
@@ -708,7 +708,7 @@ function andfeel_blog_structure_render( $post ) {
 
 function andfeel_blog_structure_save( $post_id ) {
     if ( ! isset( $_POST['andfeel_blog_structure_nonce'] ) ||
-         ! wp_verify_nonce( $_POST['andfeel_blog_structure_nonce'], 'andfeel_blog_structure' ) ) {
+         ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['andfeel_blog_structure_nonce'] ) ), 'andfeel_blog_structure' ) ) {
         return;
     }
     if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
@@ -1207,7 +1207,7 @@ function andfeel_restrict_admin_pages() {
                 wp_redirect( admin_url() );
                 exit;
             }
-            if ( isset( $_GET['post_type'] ) && in_array( $_GET['post_type'], $post_types, true ) ) {
+            if ( isset( $_GET['post_type'] ) && in_array( sanitize_text_field( wp_unslash( $_GET['post_type'] ) ), $post_types, true ) ) {
                 wp_redirect( admin_url() );
                 exit;
             }
