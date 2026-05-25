@@ -1216,3 +1216,33 @@ function andfeel_restrict_admin_pages() {
 }
 add_action( 'admin_init', 'andfeel_restrict_admin_pages' );
 
+
+/* ==========================================================================
+   14. 旧ページリダイレクト（SEO: 301）
+   ========================================================================== */
+
+function andfeel_legacy_redirects() {
+    if ( is_admin() ) {
+        return;
+    }
+
+    $redirects = [
+        '/privacy-policy/'  => '/privacy/',
+        '/works/plan01/'    => '/works/',
+        '/works/plan02/'    => '/works/',
+        '/works/plan03/'    => '/works/',
+        '/works/plan04/'    => '/works/',
+        '/works/plan05/'    => '/works/',
+        '/works/plan06/'    => '/works/',
+    ];
+
+    $request = $_SERVER['REQUEST_URI'];
+    $path    = parse_url( $request, PHP_URL_PATH );
+
+    if ( isset( $redirects[ $path ] ) ) {
+        wp_redirect( home_url( $redirects[ $path ] ), 301 );
+        exit;
+    }
+}
+add_action( 'template_redirect', 'andfeel_legacy_redirects' );
+
