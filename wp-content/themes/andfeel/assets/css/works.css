@@ -1,0 +1,232 @@
+/* ===== works.css — かたち ===== */
+
+/* --- ページヒーロー固有 --- */
+.page-hero-deco {
+  width: 34px;
+}
+.page-hero-content {
+  max-width: 636px;
+}
+
+.page-hero-content h1 {
+  text-align: left;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+/* --- フィルタータブ --- */
+.filter-section {
+  padding: 0 19.72%;
+  margin-bottom: 56px;
+}
+
+.filter-inner {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.filter-line {
+  flex: 1;
+  height: 0.5px;
+  background-color: var(--color-text);
+}
+
+.filter-tabs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 28px;
+}
+
+.filter-tab {
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: var(--color-gray);
+  padding: 12px 0;
+}
+
+.filter-tab.is-active {
+  color: var(--color-text);
+}
+
+.filter-tab:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.filter-sep {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--color-text);
+}
+
+/* --- 作品リスト --- */
+.works-list-section {
+  padding: 0 19.72%;
+  margin-bottom: 56px;
+}
+
+.works-list {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+.works-item-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.works-item-photo {
+  position: relative;
+  width: 100%;
+  height: 446px;
+  background-color: var(--color-placeholder);
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.works-thumb-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+.works-thumb-slide.is-active {
+  opacity: 1;
+}
+
+/* 後方互換: ギャラリーなしの場合 */
+.works-item-photo img:only-child {
+  position: relative;
+  opacity: 1;
+}
+
+.works-item-meta {
+  display: flex;
+  align-items: center;
+  gap: 31px;
+}
+
+.works-item-title {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.works-item-line {
+  flex: 1;
+  height: 0.75px;
+  background-color: var(--color-text);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+/* スクロールで画面内に入ったら線をループアニメーション */
+@keyframes line-draw {
+  0%   { transform: scaleX(0); transform-origin: left; }
+  40%  { transform: scaleX(1); transform-origin: left; }
+  50%  { transform: scaleX(1); transform-origin: right; }
+  90%  { transform: scaleX(0); transform-origin: right; }
+  90.1%{ transform: scaleX(0); transform-origin: left; }
+  100% { transform: scaleX(0); transform-origin: left; }
+}
+
+.works-item.is-visible .works-item-line {
+  animation: line-draw 4s ease infinite;
+}
+
+/* --- ホバーエフェクト（PC専用） --- */
+@media (any-hover: hover) and (pointer: fine) {
+  .works-thumb-slide {
+    transform: scale(1.05);
+    transition: opacity 1.2s ease, transform 0.6s ease;
+  }
+
+  .works-item-link:hover .works-thumb-slide {
+    transform: scale(1);
+  }
+}
+
+/* --- ページネーション固有 --- */
+.pagination {
+  padding: 0 0 80px;
+}
+
+.pagination-lines {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* ===== タブレット ===== */
+@media (max-width: 1024px) {
+  .page-hero-content {
+    max-width: 38.89vw;
+  }
+
+  .works-list-section {
+    padding: 0 8%;
+  }
+}
+
+/* ===== レスポンシブ ===== */
+@media (max-width: 768px) {
+  .page-hero-deco {
+    left: 0;
+    width: 80px;
+  }
+
+  .page-hero-content {
+    max-width: none;
+    width: 100%;
+  }
+
+  .page-hero-content h1 {
+    text-align: left;
+    width: auto;
+    margin: 0;
+  }
+
+  .filter-section {
+    padding: 0 16px;
+    margin-bottom: 40px;
+  }
+
+  .filter-tabs {
+    gap: 16px;
+    padding: 0 16px;
+  }
+
+  .works-list-section {
+    padding: 0 16px;
+    margin-bottom: 40px;
+  }
+
+  .works-item-photo {
+    height: 220px;
+    margin-bottom: 12px;
+  }
+
+  .works-item-title {
+    font-size: 16px;
+    letter-spacing: 0.2em;
+  }
+
+  .pagination {
+    padding: 0 0 56px;
+  }
+}

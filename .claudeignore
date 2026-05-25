@@ -1,0 +1,34 @@
+# Credentials — NEVER read
+ログイン情報/
+
+# Archive — old static HTML, superseded by WP theme
+_archive/
+
+# WordPress core
+wp-admin/
+wp-includes/
+wp-*.php
+xmlrpc.php
+license.txt
+readme.html
+
+# Uploads (user media, not theme code)
+wp-content/uploads/
+
+# Plugins (third-party, not our code)
+wp-content/plugins/
+
+# Theme binary images (no code value)
+wp-content/themes/andfeel/images/hero/
+wp-content/themes/andfeel/images/works/
+wp-content/themes/andfeel/images/about/
+wp-content/themes/andfeel/images/blog/
+wp-content/themes/andfeel/images/contact/
+
+# Backups
+wp-content/_backups/
+
+# OS / editor artifacts
+.DS_Store
+Thumbs.db
+*.bak

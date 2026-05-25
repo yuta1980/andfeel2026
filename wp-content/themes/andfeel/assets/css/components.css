@@ -1,0 +1,156 @@
+/* ===== components.css — セクション装飾・テキスト・フェードイン・リンクアロー ===== */
+
+/* ---------- スクロールフェードイン ---------- */
+.js-fade-in {
+  opacity: 0;
+  translate: 0 24px;
+  transition: opacity 1.4s ease, translate 1.4s ease;
+}
+
+.js-fade-in.is-visible {
+  opacity: 1;
+  translate: 0 0;
+}
+
+.page-hero-deco.js-fade-in {
+  opacity: 0;
+  translate: 0 30px;
+  transition: none;
+  animation: deco-fade-up 2s ease 0.3s forwards;
+}
+
+@keyframes deco-fade-up {
+  from {
+    opacity: 0;
+    translate: 0 30px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+/* ---------- セクション共通装飾 ---------- */
+.deco-line {
+  width: 0.5px;
+  height: 88px;
+  background-color: var(--color-text);
+}
+
+.deco-label {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-weight: 300;
+  font-size: 20px;
+  letter-spacing: 0.2em;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+/* ---------- セクション共通テキスト ---------- */
+.section-title {
+  font-weight: 700;
+  font-size: clamp(20px, 1.5vw + 10px, 24px);
+  letter-spacing: 0.24em;
+  margin-bottom: 32px;
+}
+
+.section-body {
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  line-height: 2.39;
+  margin-bottom: 32px;
+}
+
+.works-content .section-body {
+  line-height: 2.14;
+}
+
+.section-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.24em;
+}
+
+.link-arrow {
+  width: 20px;
+  height: 8px;
+  transition: translate 0.4s var(--ease-out-expo);
+}
+
+@media (any-hover: hover) and (pointer: fine) {
+  .section-link:hover .link-arrow {
+    translate: 6px 0;
+  }
+}
+
+/* ---------- タブレット (768px〜1024px) ---------- */
+@media (max-width: 1024px) {
+
+  /* ---------- セクション共通テキスト ---------- */
+  .section-title {
+    margin-bottom: 2.34vw;
+  }
+  .section-body {
+    font-size: clamp(12px, 1.32vw, 13.5px);
+    letter-spacing: 0.14em;
+    line-height: 2.1;
+    margin-bottom: 2.34vw;
+  }
+  .section-link {
+    font-size: clamp(10.5px, 1.07vw, 11.5px);
+    gap: 1.17vw;
+  }
+  .deco-line {
+    height: 7vw;
+  }
+}
+
+/* ---------- スマホ (〜767px) ---------- */
+@media (max-width: 768px) {
+
+  /* セクション共通 */
+  .section-title {
+    margin-bottom: 20px;
+  }
+  .section-body {
+    font-size: 14px;
+    letter-spacing: 0.14em;
+    line-height: 2.2;
+    margin-bottom: 24px;
+  }
+  /* section-link はタップ領域を十分に確保 */
+  .section-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    padding: 10px 0;
+    min-height: 44px;
+  }
+  .deco-label {
+    font-size: 14px;
+    letter-spacing: 0.18em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js-fade-in {
+    opacity: 1;
+    translate: 0 0;
+    transition: none;
+  }
+  .page-hero-deco.js-fade-in {
+    animation: none;
+    opacity: 1;
+    translate: 0 0;
+  }
+  .link-arrow {
+    transition: none;
+  }
+}

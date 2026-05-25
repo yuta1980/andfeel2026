@@ -1,0 +1,136 @@
+/* ===== blog-single.css — ブログ記事詳細 ===== */
+
+/* --- 記事レイアウト --- */
+.blog-single {
+  padding: 112px 0 0;
+}
+
+.blog-single-article {
+  padding: 0 19.72%;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  column-gap: 56px;
+}
+
+.blog-single-header {
+  display: contents;
+}
+
+.blog-single-text {
+  grid-column: 1;
+}
+
+.blog-single-title {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.blog-single-date {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  line-height: 2;
+  margin-bottom: 24px;
+}
+
+.blog-single-eyecatch {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  align-self: start;
+}
+
+.blog-single-eyecatch-placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: var(--color-placeholder);
+}
+
+/* --- 記事本文 --- */
+.blog-single-body {
+  grid-column: 1;
+  padding-top: 0;
+}
+
+.blog-single-body p {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  line-height: 2.39;
+}
+
+.blog-single-heading {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  line-height: 1.8;
+  margin-top: 48px;
+  margin-bottom: 16px;
+}
+
+/* ===== タブレット ===== */
+@media (max-width: 1024px) {
+  .blog-single-article {
+    padding: 0 8%;
+    grid-template-columns: 1fr 280px;
+  }
+}
+
+/* ===== モバイル ===== */
+@media (max-width: 768px) {
+  .blog-single {
+    padding: 88px 0 0;
+  }
+
+  .blog-single-article {
+    padding: 0 16px;
+    display: block;
+  }
+
+  .blog-single-header {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 24px;
+    align-items: center;
+  }
+
+  .blog-single-text {
+    width: 100%;
+  }
+
+  .blog-single-title {
+    font-size: 20px;
+  }
+
+  .blog-single-eyecatch {
+    width: 100%;
+    align-self: center;
+  }
+
+  .blog-single-body {
+    max-width: none;
+  }
+
+  .blog-single-body p {
+    font-size: 13px;
+    line-height: 2.2;
+    letter-spacing: 0.14em;
+  }
+
+  .blog-single-heading {
+    font-size: 16px;
+    margin-top: 36px;
+    margin-bottom: 12px;
+  }
+}
+
+/* ===== スマートフォン ===== */
+@media (max-width: 430px) {
+  .blog-single-title {
+    font-size: 18px;
+  }
+}

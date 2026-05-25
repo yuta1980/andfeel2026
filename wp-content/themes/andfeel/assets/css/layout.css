@@ -1,0 +1,446 @@
+/* ===== layout.css — ヘッダー・フッター・ハンバーガー・共通レイアウト ===== */
+
+/* ===== ヘッダー ===== */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-bg);
+  width: 100%;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  padding: 0 58px;
+}
+
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 58px;
+  right: 58px;
+  height: 0.5px;
+  background-color: var(--color-border);
+}
+
+.header-logo {
+  flex-shrink: 0;
+}
+
+.header-logo-img {
+  width: 117px;
+  height: auto;
+  object-fit: contain;
+}
+
+.header-nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 55px;
+  height: var(--header-height);
+}
+
+.header-nav > a {
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  white-space: nowrap;
+}
+
+/* ---------- ナビ スライドアップエフェクト ---------- */
+.nav-slide-text {
+  display: block;
+  height: 1.7em;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.nav-slide-text span {
+  display: block;
+  transition: translate 0.5s var(--ease-out-expo), opacity 0.5s linear;
+}
+
+.nav-slide-text::after {
+  content: attr(data-text);
+  display: block;
+  opacity: 0;
+  font-size: 14px;
+  letter-spacing: 0.16em;
+  font-weight: 600;
+  transition: translate 0.5s var(--ease-out-expo), opacity 0.5s linear;
+}
+
+@media (any-hover: hover) and (pointer: fine) {
+  .header-nav > a:hover .nav-slide-text span,
+  .header-nav > a:hover .nav-slide-text::after {
+    translate: 0 -100%;
+  }
+
+  .header-nav > a:hover .nav-slide-text span {
+    opacity: 0;
+  }
+
+  .header-nav > a:hover .nav-slide-text::after {
+    opacity: 1;
+  }
+
+}
+
+.nav-divider {
+  width: 0.5px;
+  height: 52px;
+  background-color: var(--color-text);
+}
+
+.nav-contact-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 86px;
+  height: 31px;
+  background-color: var(--color-white-60);
+  border: 0.5px solid var(--color-text);
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+}
+
+/* ---------- モバイルナビ内ロゴ（PCでは非表示） ---------- */
+.nav-mobile-logo {
+  display: none;
+}
+
+.nav-instagram img {
+  width: 20px;
+  height: 20px;
+}
+
+/* ===== スクリーンリーダー専用 ===== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+
+/* ===== フッター ===== */
+.footer {
+  width: 100%;
+  border-top: 0.5px solid var(--color-text);
+}
+
+.footer-inner {
+  max-width: 1321.5px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-main {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+/* ---------- 左カラム：ロゴ ---------- */
+.footer-logo-col {
+  flex: 0 0 61.9%;
+  padding: 163px 0 40px 23.16%;
+}
+
+.footer-logo-img {
+  display: block;
+  width: 184px;
+  height: 33px;
+  object-fit: contain;
+}
+
+/* ---------- 右カラム：テキスト情報 ---------- */
+.footer-info-col {
+  flex: 1;
+  padding: 80px 16.91% 28px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-name-area {
+  padding-bottom: 16px;
+}
+
+.footer-name {
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  line-height: 1.8;
+}
+
+.footer-email {
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  line-height: 1.8;
+  white-space: nowrap;
+}
+
+.footer-address {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-bottom: 12px;
+}
+
+.footer-address p {
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  line-height: 1.4;
+}
+
+.footer-address-label {
+  font-weight: 700;
+}
+
+.footer-policy {
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.32em;
+  padding-top: 12px;
+}
+
+.footer-copyright {
+  text-align: center;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  padding: 20px 0 24px;
+}
+
+/* ===== ハンバーガーボタン ===== */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: auto;
+  z-index: 200;
+  flex-shrink: 0;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 1px;
+  background-color: var(--color-text);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.hamburger.is-open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger.is-open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.is-open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ===== タブレット (768px〜1024px) ===== */
+@media (max-width: 1024px) {
+
+  /* ---------- ヘッダー ---------- */
+  .header {
+    height: 64px;
+    padding: 0 3.13vw;
+  }
+  .header::after {
+    left: 3.13vw;
+    right: 3.13vw;
+  }
+  .header-logo-img {
+    width: clamp(80px, 9.77vw, 110px);
+  }
+  .header-nav {
+    height: 64px;
+    gap: clamp(16px, 2.34vw, 28px);
+  }
+  .header-nav > a {
+    font-size: clamp(11px, 1.27vw, 13px);
+  }
+  .nav-contact-btn {
+    width: auto;
+    padding: 0 1.46vw;
+    font-size: clamp(11px, 1.27vw, 13px);
+  }
+  .nav-divider {
+    height: clamp(36px, 5vw, 48px);
+  }
+
+  /* ---------- フッター ---------- */
+  .footer-main {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .footer-logo-col {
+    flex: 0 0 61.9%;
+    padding: 7vw 0 4vw 23.16%;
+  }
+  .footer-logo-img {
+    width: clamp(110px, 13vw, 160px);
+    height: auto;
+  }
+  .footer-info-col {
+    flex: 1;
+    min-width: 0;
+    padding: 5vw 10% 3vw 0;
+  }
+  .footer-name,
+  .footer-email,
+  .footer-address p {
+    font-size: clamp(11px, 1.27vw, 13px);
+  }
+  .footer-policy {
+    font-size: clamp(11px, 1.27vw, 13px);
+    letter-spacing: 0.24em;
+  }
+  .footer-copyright {
+    font-size: clamp(11px, 1.27vw, 13px);
+    padding: 2vw 0 2.5vw;
+  }
+}
+
+/* ===== スマホ (〜767px) ===== */
+@media (max-width: 768px) {
+
+  /* ---------- ハンバーガー表示 ---------- */
+  .hamburger {
+    display: flex;
+  }
+
+  /* ---------- ヘッダー ---------- */
+  .header {
+    height: 60px;
+    padding: 0 16px;
+  }
+  .header::after {
+    left: 16px;
+    right: 16px;
+  }
+  .header-logo-img {
+    width: 90px;
+  }
+
+  /* ---------- ナビ：フルスクリーンオーバーレイ ---------- */
+  .header-nav {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--color-bg);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    height: auto;
+    margin-left: 0;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 150;
+  }
+  .header-nav.is-open {
+    transform: translateX(0);
+  }
+  .header-nav > a {
+    font-size: 20px;
+    letter-spacing: 0.2em;
+    padding: 12px 0;
+  }
+  .nav-mobile-logo {
+    display: block;
+    margin-bottom: 8px;
+  }
+  .nav-mobile-logo-img {
+    width: 120px;
+    height: auto;
+  }
+  .nav-divider {
+    display: none;
+  }
+  .nav-contact-btn {
+    width: 120px;
+    height: 40px;
+    background-color: var(--color-white-60);
+    border: 0.5px solid var(--color-text);
+    border-radius: 4px;
+    padding: 0;
+    font-size: 14px;
+    margin-top: 8px;
+  }
+
+  /* ---------- フッター ---------- */
+  .footer-main {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .footer-logo-col {
+    flex: none;
+    width: 100%;
+    padding: 40px 6% 24px;
+  }
+  .footer-logo-img {
+    width: 120px;
+    height: auto;
+  }
+  .footer-info-col {
+    flex: none;
+    width: 100%;
+    padding: 0 6% 32px;
+  }
+  .footer-name-area {
+    padding-bottom: 16px;
+  }
+  .footer-name,
+  .footer-email {
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    line-height: 1.8;
+  }
+  .footer-address {
+    padding-bottom: 12px;
+    gap: 2px;
+  }
+  .footer-address p {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    line-height: 1.7;
+  }
+  .footer-policy {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    padding-top: 12px;
+    display: inline-block;
+    min-height: 44px;
+    line-height: 44px;
+  }
+  .footer-copyright {
+    font-size: 10px;
+    padding: 16px 0 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-slide-text span,
+  .nav-slide-text::after {
+    transition: none;
+  }
+}

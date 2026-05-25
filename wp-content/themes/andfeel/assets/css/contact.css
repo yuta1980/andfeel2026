@@ -1,0 +1,761 @@
+/* ===== contact.css — ご相談 ===== */
+
+/* --- ページヒーロー固有 --- */
+.page-hero {
+  padding: 112px 0 112px;
+}
+
+.page-hero-content {
+  max-width: 540px;
+}
+
+/* --- TELボックス --- */
+.tel-box {
+  padding: 0 19.72%;
+  margin-bottom: 64px;
+}
+
+.tel-box-inner {
+  background: var(--color-bg-light);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.tel-box-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 0 40px;
+  text-align: center;
+}
+
+.tel-number {
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  line-height: 2.39;
+  white-space: nowrap;
+}
+
+.tel-label {
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0.24em;
+  text-align: center;
+  line-height: 2.39;
+}
+.tel-hours {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.24em;
+  line-height: 2.39;
+}
+
+.tel-hours .tel-hours-label {
+  font-size: 10px;
+}
+
+.tel-hours .tel-hours-time {
+  font-size: 12px;
+}
+
+.tel-box-photo {
+  width: 373px;
+  height: 193px;
+  flex-shrink: 0;
+  margin: 28px 28px 28px 0;
+  object-fit: cover;
+}
+
+/* --- お問い合わせフォーム --- */
+.contact-form-wrap {
+  padding: 0 19.72%;
+  margin-bottom: 64px;
+}
+
+.contact-form-inner {
+  background: var(--color-bg-light);
+  border-radius: 8px;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.25);
+  padding: 40px 60px 40px;
+}
+
+.form-fields {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.form-field:last-of-type {
+  margin-bottom: 0;
+}
+
+.form-label {
+  font-weight: 900;
+  font-size: 14px;
+  color: var(--color-text-sub);
+  letter-spacing: 0.2em;
+  line-height: 1;
+  height: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.form-label .required {
+  font-size: 0;
+  line-height: 0;
+  color: transparent;
+}
+
+.form-label .required::after {
+  content: '*';
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--color-text-sub);
+  margin-left: 2px;
+}
+
+.form-label-note {
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--color-gray);
+  letter-spacing: 0.1em;
+  margin-left: 4px;
+}
+
+.form-input {
+  background: #fff;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 55px;
+}
+
+.form-input::placeholder {
+  color: #aaa;
+}
+
+.form-input:focus {
+  outline: 2px solid #555;
+  outline-offset: 0;
+  color: var(--color-text-sub);
+}
+
+textarea.form-input {
+  height: 155px;
+  resize: vertical;
+}
+
+/* チェックボックスグループ */
+.checkbox-group {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.checkbox-item {
+  position: relative;
+  background: #fff;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  padding: 14px 16px 14px 40px;
+  width: 134px;
+  height: 51px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.checkbox-item input[type="checkbox"] {
+  position: absolute;
+  left: 17px;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background: #fff;
+  border: 1px solid var(--color-text-sub);
+  border-radius: 4px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.checkbox-item input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  width: 5px;
+  height: 9px;
+  border-right: 2px solid var(--color-text-sub);
+  border-bottom: 2px solid var(--color-text-sub);
+  transform: rotate(45deg);
+}
+
+.checkbox-item-label {
+  font-weight: 900;
+  font-size: 14px;
+  color: var(--color-text-sub);
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* プライバシーポリシー */
+.privacy-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 28px;
+  margin-bottom: 28px;
+}
+
+.privacy-row input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #d9d9d9;
+  border: 1px solid #c9c3c3;
+  flex-shrink: 0;
+  margin-top: 5px;
+  cursor: pointer;
+  position: relative;
+}
+
+.privacy-row input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  width: 5px;
+  height: 9px;
+  border-right: 2px solid var(--color-text-sub);
+  border-bottom: 2px solid var(--color-text-sub);
+  transform: rotate(45deg);
+}
+
+.privacy-text {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  line-height: 1.8;
+  color: var(--color-text);
+}
+
+.privacy-text a {
+  text-decoration: underline;
+}
+
+/* 送信ボタン */
+.submit-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.submit-btn {
+  background: #232323;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 20px 48px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  width: 188px;
+  height: 59px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.submit-btn:hover {
+  opacity: 0.8;
+}
+
+/* --- CF7 統合スタイル --- */
+.wpcf7-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.wpcf7-form .form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.wpcf7-form .form-field:last-of-type {
+  margin-bottom: 0;
+}
+
+.wpcf7-form .wpcf7-form-control-wrap {
+  display: block;
+}
+
+/* CF7テキスト・メール・電話入力 */
+.wpcf7-form .wpcf7-text,
+.wpcf7-form .wpcf7-email,
+.wpcf7-form .wpcf7-tel,
+.wpcf7-form .wpcf7-textarea {
+  background: #fff;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 55px;
+  box-sizing: border-box;
+}
+
+.wpcf7-form .wpcf7-textarea {
+  height: 155px;
+  resize: vertical;
+}
+
+.wpcf7-form .wpcf7-text::placeholder,
+.wpcf7-form .wpcf7-email::placeholder,
+.wpcf7-form .wpcf7-tel::placeholder,
+.wpcf7-form .wpcf7-textarea::placeholder {
+  color: #aaa;
+}
+
+.wpcf7-form .wpcf7-text:focus,
+.wpcf7-form .wpcf7-email:focus,
+.wpcf7-form .wpcf7-tel:focus,
+.wpcf7-form .wpcf7-textarea:focus {
+  outline: 2px solid #555;
+  outline-offset: 0;
+  color: var(--color-text-sub);
+}
+
+/* CF7チェックボックス / ラジオボタングループ */
+.wpcf7-form .checkbox-group .wpcf7-checkbox,
+.wpcf7-form .checkbox-group .wpcf7-radio {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.wpcf7-form .checkbox-group .wpcf7-list-item {
+  position: relative;
+  background: #fff;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  padding: 14px 16px 14px 40px;
+  width: auto;
+  min-width: 134px;
+  height: 51px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin: 0;
+}
+
+.wpcf7-form .checkbox-group .wpcf7-list-item label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+.wpcf7-form .checkbox-group .wpcf7-list-item input[type="checkbox"],
+.wpcf7-form .checkbox-group .wpcf7-list-item input[type="radio"] {
+  position: absolute;
+  left: 17px;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background: #fff;
+  border: 1px solid var(--color-text-sub);
+  border-radius: 50%;
+  flex-shrink: 0;
+  cursor: pointer;
+  margin: 0;
+}
+
+.wpcf7-form .checkbox-group .wpcf7-list-item input[type="checkbox"] {
+  border-radius: 4px;
+}
+
+.wpcf7-form .checkbox-group .wpcf7-list-item input[type="checkbox"]:checked::after,
+.wpcf7-form .checkbox-group .wpcf7-list-item input[type="radio"]:checked::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  width: 5px;
+  height: 9px;
+  border-right: 2px solid var(--color-text-sub);
+  border-bottom: 2px solid var(--color-text-sub);
+  transform: rotate(45deg);
+}
+
+.wpcf7-form .checkbox-group .wpcf7-list-item input[type="radio"]:checked::after {
+  top: 3px;
+  left: 3px;
+  width: 7px;
+  height: 7px;
+  background: var(--color-text-sub);
+  border: none;
+  border-radius: 50%;
+  transform: none;
+}
+
+.wpcf7-form .checkbox-group .wpcf7-list-item-label {
+  font-weight: 900;
+  font-size: 14px;
+  color: var(--color-text-sub);
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* CF7 承諾確認（プライバシーポリシー） */
+.wpcf7-form .privacy-row {
+  margin-top: 28px;
+  margin-bottom: 28px;
+}
+
+.wpcf7-form .privacy-row p {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+  margin: 0;
+}
+
+.wpcf7-form .privacy-row .wpcf7-form-control-wrap {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.wpcf7-form .privacy-row .wpcf7-acceptance {
+  display: inline-flex;
+}
+
+.wpcf7-form .privacy-row .wpcf7-list-item {
+  display: inline-flex;
+}
+
+.wpcf7-form .privacy-row .wpcf7-acceptance input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #d9d9d9;
+  border: 1px solid #c9c3c3;
+  flex-shrink: 0;
+  margin-top: 4px;
+  cursor: pointer;
+  position: relative;
+}
+
+.wpcf7-form .privacy-row .wpcf7-acceptance input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  width: 5px;
+  height: 9px;
+  border-right: 2px solid var(--color-text-sub);
+  border-bottom: 2px solid var(--color-text-sub);
+  transform: rotate(45deg);
+}
+
+/* CF7送信ボタン */
+.wpcf7-form .submit-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.wpcf7-form .submit-row input[type="submit"].submit-btn {
+  background: #232323;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 20px 48px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  width: 188px;
+  height: 59px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wpcf7-form .submit-row input[type="submit"].submit-btn:hover {
+  opacity: 0.8;
+}
+
+/* CF7バリデーションエラー */
+.wpcf7-form .wpcf7-not-valid-tip {
+  color: #dc3545;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* プライバシーポリシー未同意時のエラー */
+.wpcf7-form .privacy-row .wpcf7-not-valid-tip {
+  display: none;
+}
+
+.wpcf7-form .privacy-row:has(.wpcf7-not-valid-tip) {
+  flex-wrap: wrap;
+}
+
+.wpcf7-form .privacy-row:has(.wpcf7-not-valid-tip)::after {
+  content: 'プライバシーポリシーに同意してください。';
+  color: #dc3545;
+  font-size: 12px;
+  text-align: center;
+  flex-basis: 100%;
+}
+
+.wpcf7-form .wpcf7-response-output {
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px 0 0;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* CF7送信中スピナー */
+.wpcf7-form .wpcf7-spinner {
+  display: none;
+}
+
+/* --- 事務所情報 --- */
+.office-info {
+  padding: 0 19.72% 80px;
+  margin-bottom: 0;
+}
+
+.office-cols {
+  display: flex;
+  flex-direction: row;
+  gap: 5vw;
+}
+
+.office-col {
+  flex: 1;
+  min-width: 0;
+}
+
+.office-col-text {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  line-height: 30px;
+}
+
+.office-col-title {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  line-height: 30px;
+  margin-bottom: 8px;
+}
+
+.office-map {
+  display: block;
+  width: 100%;
+  height: 13.75vw;
+  object-fit: cover;
+  margin-top: 16px;
+  filter: grayscale(100%);
+}
+
+/* ===== タブレット ===== */
+@media (max-width: 1024px) {
+  .page-hero-content {
+    max-width: 38.89vw;
+  }
+
+  .tel-box {
+    padding: 0 8%;
+  }
+
+  .tel-box-text {
+    padding: 0 24px;
+    gap: 20px;
+  }
+
+  .tel-box-photo {
+    width: 280px;
+    height: 160px;
+    margin: 24px 24px 24px 0;
+  }
+
+  .contact-form-wrap {
+    padding: 0 8%;
+  }
+
+  .office-info {
+    padding: 0 8% 80px;
+  }
+
+  .office-cols {
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .office-map {
+    height: 180px;
+  }
+}
+
+/* ===== レスポンシブ ===== */
+@media (max-width: 768px) {
+  .page-hero {
+    padding: 112px 6% 112px 44px;
+  }
+
+  .page-hero-deco {
+    left: 0;
+  }
+
+  .page-hero-content {
+    max-width: none;
+    width: 100%;
+  }
+
+  .page-hero-content h1 {
+    font-size: 24px;
+  }
+
+  .tel-box {
+    padding: 0 8%;
+  }
+
+  .tel-box-text {
+    padding: 0 24px;
+    gap: 20px;
+  }
+
+  .tel-box-photo {
+    width: 280px;
+    height: 160px;
+    margin: 24px 24px 24px 0;
+  }
+
+  .contact-form-wrap {
+    padding: 0 8%;
+  }
+
+  .contact-form-inner {
+    padding: 28px 24px;
+  }
+
+  .checkbox-group {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .checkbox-item {
+    width: 100%;
+  }
+
+  .wpcf7-form .checkbox-group .wpcf7-checkbox {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .wpcf7-form .checkbox-group .wpcf7-list-item {
+    width: 100%;
+  }
+
+  .submit-row {
+    justify-content: center;
+  }
+
+  .wpcf7-form .submit-row {
+    justify-content: center;
+  }
+
+  .privacy-row {
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
+
+  .office-info {
+    padding: 0 16px;
+    margin-bottom: 48px;
+  }
+
+  .office-cols {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .office-map {
+    width: 100%;
+    max-width: none;
+    height: 180px;
+  }
+}
+
+/* ===== スマートフォン ===== */
+@media (max-width: 430px) {
+  .tel-box-inner {
+    flex-direction: column-reverse;
+    padding: 24px;
+    gap: 24px;
+  }
+
+  .tel-box-photo {
+    width: 100%;
+    height: 180px;
+    margin: 0;
+    border-radius: 8px;
+  }
+
+  .tel-box-text {
+    padding: 0;
+    gap: 16px;
+  }
+}
+
+/* --- reCAPTCHA v3 バッジ非表示 --- */
+.grecaptcha-badge {
+  visibility: hidden !important;
+}

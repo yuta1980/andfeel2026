@@ -1,0 +1,382 @@
+/* ===== works-single.css — 作品詳細 ===== */
+
+/* --- 作品詳細レイアウト --- */
+.works-single {
+  padding: 40px 0 0;
+}
+
+.works-single-article {
+  padding: 0 19.72%;
+}
+
+/* --- タイトル行（線 + タイトル + 線） --- */
+.works-single-title-row {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+
+.works-title-line {
+  flex: 1;
+  height: 0.5px;
+  background-color: var(--color-text);
+}
+
+.works-single-title {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ===== カルーセル ===== */
+.works-slideshow {
+  position: relative;
+  margin: 0 auto 40px;
+}
+
+.works-slideshow-viewport {
+  overflow: hidden;
+}
+
+.works-slideshow-track {
+  display: flex;
+  transition: transform 0.6s ease;
+}
+
+.works-slide {
+  flex: 1 0 0%;
+  min-width: 0;
+}
+
+.works-slide img {
+  width: 100%;
+  height: 446px;
+  object-fit: cover;
+  display: block;
+  cursor: pointer;
+}
+
+/* --- カルーセル矢印 --- */
+.works-slideshow-prev,
+.works-slideshow-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 0.2s;
+  color: #fff;
+}
+
+.works-slideshow-prev { left: 16px; }
+.works-slideshow-next { right: 16px; }
+
+.works-slideshow-prev svg,
+.works-slideshow-next svg {
+  width: 20px;
+  height: 20px;
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+}
+
+.works-slideshow-prev:hover,
+.works-slideshow-next:hover {
+  opacity: 0.7;
+}
+
+/* --- カルーセルドット --- */
+.works-slideshow-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.works-slideshow-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-gray, #ccc);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.works-slideshow-dot.is-active {
+  background-color: var(--color-text, #333);
+}
+
+/* --- 作品説明 --- */
+.works-single-body {
+  max-width: 100%;
+  margin-bottom: 0;
+}
+
+.works-single-body p {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  line-height: 2.39;
+}
+
+/* --- 作品データ --- */
+.works-single-data {
+  margin-top: 48px;
+  padding-top: 40px;
+  border-top: 0.5px solid var(--color-text);
+}
+
+.works-data-row {
+  display: flex;
+  gap: 32px;
+  padding: 12px 0;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.15);
+}
+
+.works-data-row dt {
+  width: 100px;
+  flex-shrink: 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+}
+
+.works-data-row dd {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  margin: 0;
+}
+
+/* ===== タブレット ===== */
+@media (max-width: 1024px) {
+  .works-single-article {
+    padding: 0 8%;
+  }
+}
+
+/* ===== モバイル ===== */
+@media (max-width: 768px) {
+  .works-single {
+    padding: 80px 0 0;
+  }
+
+  .works-single-article {
+    padding: 0 16px;
+  }
+
+  .works-single-title-row {
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .works-single-title {
+    font-size: 16px;
+    letter-spacing: 0.2em;
+  }
+
+  /* カルーセル */
+  .works-slideshow {
+    margin: 0 auto 32px;
+  }
+
+  .works-slide img {
+    height: 220px;
+  }
+
+  .works-slideshow-prev { left: 8px; }
+  .works-slideshow-next { right: 8px; }
+
+  .works-slideshow-prev,
+  .works-slideshow-next {
+    width: 36px;
+    height: 36px;
+  }
+
+  .works-slideshow-prev svg,
+  .works-slideshow-next svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .works-single-body p {
+    font-size: 13px;
+    line-height: 2.2;
+    letter-spacing: 0.14em;
+  }
+
+  .works-single-data {
+    margin-top: 32px;
+    padding-top: 28px;
+  }
+
+  .works-data-row {
+    gap: 20px;
+    padding: 10px 0;
+  }
+
+  .works-data-row dt {
+    width: 80px;
+    font-size: 12px;
+  }
+
+  .works-data-row dd {
+    font-size: 12px;
+  }
+}
+
+/* ===== スマートフォン ===== */
+@media (max-width: 430px) {
+  .works-single-title {
+    font-size: 15px;
+  }
+
+  .works-slide img {
+    height: 200px;
+  }
+}
+
+/* ===== モーダル / ライトボックス ===== */
+.works-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.works-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.works-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+}
+
+.works-modal-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 90vw;
+  max-height: 85vh;
+  z-index: 1;
+}
+
+.works-modal-image {
+  max-width: 80vw;
+  max-height: 85vh;
+  object-fit: contain;
+  display: block;
+}
+
+.works-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  z-index: 2;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 8px;
+  transition: opacity 0.2s;
+}
+
+.works-modal-close:hover {
+  opacity: 0.7;
+}
+
+.works-modal-prev,
+.works-modal-next {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 12px;
+  flex-shrink: 0;
+  transition: opacity 0.2s;
+}
+
+.works-modal-prev:hover,
+.works-modal-next:hover {
+  opacity: 0.7;
+}
+
+/* モバイル: モーダルレイアウト */
+@media (max-width: 768px) {
+  .works-modal-content {
+    flex-direction: column;
+    max-width: 95vw;
+    max-height: 90vh;
+    gap: 8px;
+  }
+
+  .works-modal-image {
+    max-width: 92vw;
+    max-height: 70vh;
+  }
+
+  .works-modal-prev,
+  .works-modal-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    padding: 12px;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+  }
+
+  .works-modal-prev { left: 4px; }
+  .works-modal-next { right: 4px; }
+
+  .works-modal-close {
+    top: 12px;
+    right: 12px;
+    font-size: 28px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+}
+
+@media (max-width: 430px) {
+  .works-modal-image {
+    max-width: 95vw;
+    max-height: 65vh;
+  }
+
+  .works-modal-prev,
+  .works-modal-next {
+    font-size: 20px;
+    padding: 8px;
+  }
+}

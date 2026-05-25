@@ -1,0 +1,41 @@
+# Credentials — NEVER commit
+ログイン情報/
+
+# Archive — old static HTML
+_archive/
+
+# WordPress core (if ever added)
+wp-admin/
+wp-includes/
+wp-*.php
+xmlrpc.php
+license.txt
+readme.html
+
+# Uploads (user media)
+wp-content/uploads/
+
+# Plugins (third-party)
+wp-content/plugins/
+
+# Backups
+wp-content/_backups/
+
+# Claude Code local config
+.claude/settings.local.json
+.claude/hooks/*.token
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.bak
+
+# Large binary images (tracked separately or optimized)
+# Keep favicon/logo/icons for the theme to work
+wp-content/themes/andfeel/images/hero/*.jpg
+wp-content/themes/andfeel/images/works/*.jpg
+wp-content/themes/andfeel/images/about/profile.jpg
+wp-content/themes/andfeel/images/about/profile.png
+wp-content/themes/andfeel/images/blog/*.jpg
+wp-content/themes/andfeel/images/contact/*.jpg
+.claude/scheduled_tasks.lock
