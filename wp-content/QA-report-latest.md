@@ -1,6 +1,6 @@
 # Nightly QA Report
 
-**日時:** 2026-05-26 12:12 (UTC)
+**日時:** 2026-05-26 23:44 (UTC)
 **結果:** ⚠️ Issues Found
 
 ---
@@ -41,15 +41,10 @@
 
 | ファイル:行 | 内容 | 判定 |
 |---|---|---|
-| functions.php:460 | `$_POST['andfeel_works_data_nonce_field']` | `wp_verify_nonce()` でnonce検証済み |
-| functions.php:467 | `$_POST[$key]` | `sanitize_text_field()` でラップ済み |
-| functions.php:591 | `$_POST['andfeel_gallery_nonce_field']` | `wp_verify_nonce()` でnonce検証済み |
-| functions.php:601 | `$_POST['works_gallery_ids']` | `sanitize_text_field()` + `absint()` でラップ済み |
-| functions.php:710 | `$_POST['andfeel_blog_structure_nonce']` | `wp_verify_nonce()` でnonce検証済み |
-| functions.php:721 | `$_POST['blog_intro']` | `sanitize_textarea_field(wp_unslash(...))` でラップ済み |
-| functions.php:728 | `$_POST[$h2_key]` | `sanitize_text_field(wp_unslash(...))` でラップ済み |
-| functions.php:731 | `$_POST[$body_key]` | `sanitize_textarea_field(wp_unslash(...))` でラップ済み |
-| functions.php:1210 | `$_GET['post_type']` | `in_array(..., true)` で既知リストと厳密比較済み、出力なし |
+| functions.php:467 | `$_POST[$key]` | `sanitize_text_field( wp_unslash() )` でラップ済み |
+| functions.php:721 | `$_POST['blog_intro']` | `sanitize_textarea_field( wp_unslash() )` でラップ済み |
+| functions.php:728 | `$_POST[$h2_key]` | `sanitize_text_field( wp_unslash() )` でラップ済み |
+| functions.php:731 | `$_POST[$body_key]` | `sanitize_textarea_field( wp_unslash() )` でラップ済み |
 
 ---
 
