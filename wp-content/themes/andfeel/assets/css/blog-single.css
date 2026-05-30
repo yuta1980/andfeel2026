@@ -71,6 +71,17 @@
   margin-bottom: 16px;
 }
 
+/* --- セクション画像 --- */
+.blog-single-section-img {
+  margin: 24px 0;
+}
+
+.blog-single-section-img-el {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* ===== タブレット ===== */
 @media (max-width: 1024px) {
   .blog-single-article {

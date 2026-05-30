@@ -37,7 +37,8 @@ $theme_uri = get_template_directory_uri();
       $has_custom_fields = (bool) $blog_intro;
       if ( ! $has_custom_fields ) {
           for ( $j = 1; $j <= 3; $j++ ) {
-              if ( get_post_meta( get_the_ID(), "blog_section_h2_{$j}", true ) ) {
+              if ( get_post_meta( get_the_ID(), "blog_section_h2_{$j}", true ) ||
+                   get_post_meta( get_the_ID(), "blog_section_image_{$j}", true ) ) {
                   $has_custom_fields = true;
                   break;
               }
@@ -49,14 +50,24 @@ $theme_uri = get_template_directory_uri();
             <p><?php echo nl2br( esc_html( $blog_intro ) ); ?></p>
           <?php endif;
           for ( $i = 1; $i <= 3; $i++ ) :
-              $h2   = get_post_meta( get_the_ID(), "blog_section_h2_{$i}", true );
-              $body = get_post_meta( get_the_ID(), "blog_section_body_{$i}", true );
+              $h2     = get_post_meta( get_the_ID(), "blog_section_h2_{$i}", true );
+              $body   = get_post_meta( get_the_ID(), "blog_section_body_{$i}", true );
+              $img_id = (int) get_post_meta( get_the_ID(), "blog_section_image_{$i}", true );
+              if ( ! $h2 && ! $img_id && ! $body ) continue;
               if ( $h2 ) : ?>
                 <h2 class="blog-single-heading"><?php echo esc_html( $h2 ); ?></h2>
-                <?php if ( $body ) : ?>
-                  <p><?php echo nl2br( esc_html( $body ) ); ?></p>
-                <?php endif;
-              endif;
+              <?php endif;
+              if ( $img_id ) : ?>
+                <figure class="blog-single-section-img">
+                  <?php echo wp_get_attachment_image( $img_id, 'full', false, [
+                      'class'   => 'blog-single-section-img-el',
+                      'loading' => 'lazy',
+                  ] ); ?>
+                </figure>
+              <?php endif;
+              if ( $body ) : ?>
+                <p><?php echo nl2br( esc_html( $body ) ); ?></p>
+              <?php endif;
           endfor;
       else :
           the_content();

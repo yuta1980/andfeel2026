@@ -623,12 +623,14 @@ add_action( 'add_meta_boxes', 'andfeel_blog_structure_meta_box' );
 function andfeel_blog_structure_render( $post ) {
     wp_nonce_field( 'andfeel_blog_structure', 'andfeel_blog_structure_nonce' );
 
+    wp_enqueue_media();
     $intro = get_post_meta( $post->ID, 'blog_intro', true );
     $sections = [];
     for ( $i = 1; $i <= 3; $i++ ) {
         $sections[ $i ] = [
-            'h2'   => get_post_meta( $post->ID, "blog_section_h2_{$i}", true ),
-            'body' => get_post_meta( $post->ID, "blog_section_body_{$i}", true ),
+            'h2'    => get_post_meta( $post->ID, "blog_section_h2_{$i}", true ),
+            'body'  => get_post_meta( $post->ID, "blog_section_body_{$i}", true ),
+            'image' => (int) get_post_meta( $post->ID, "blog_section_image_{$i}", true ),
         ];
     }
     ?>
@@ -681,6 +683,14 @@ function andfeel_blog_structure_render( $post ) {
             color: #787c82;
             margin-top: 4px;
         }
+        .andfeel-blog-img-preview {
+            display: block;
+            width: 160px;
+            height: auto;
+            margin-bottom: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
     </style>
 
     <div class="andfeel-blog-field">
@@ -699,10 +709,61 @@ function andfeel_blog_structure_render( $post ) {
         </div>
 
         <div class="andfeel-blog-field">
+            <label>セクション画像（任意）</label>
+            <?php
+            $img_id    = $sections[ $i ]['image'];
+            $thumb_url = $img_id ? wp_get_attachment_image_url( $img_id, 'thumbnail' ) : '';
+            ?>
+            <img class="andfeel-blog-img-preview" id="blog-img-preview-<?php echo $i; ?>"
+                 src="<?php echo esc_url( $thumb_url ); ?>"
+                 style="<?php echo $thumb_url ? '' : 'display:none;'; ?>">
+            <input type="hidden" name="blog_section_image_<?php echo $i; ?>"
+                   id="blog-img-id-<?php echo $i; ?>"
+                   value="<?php echo esc_attr( $img_id ?: '' ); ?>">
+            <button type="button" class="button andfeel-blog-img-select"
+                    data-index="<?php echo $i; ?>">画像を選択</button>
+            <button type="button" class="button andfeel-blog-img-remove"
+                    data-index="<?php echo $i; ?>"
+                    style="margin-left:8px;<?php echo $thumb_url ? '' : 'display:none;'; ?>">削除</button>
+            <p class="andfeel-blog-hint">※ 見出しと本文の間に表示されます</p>
+        </div>
+
+        <div class="andfeel-blog-field">
             <label for="blog_section_body_<?php echo $i; ?>">本文</label>
             <textarea id="blog_section_body_<?php echo $i; ?>" name="blog_section_body_<?php echo $i; ?>" rows="8" placeholder="本文を入力"><?php echo esc_textarea( $sections[ $i ]['body'] ); ?></textarea>
         </div>
     <?php endfor; ?>
+
+    <script>
+    jQuery(function($){
+        $('.andfeel-blog-img-select').on('click', function(e){
+            e.preventDefault();
+            var idx = $(this).data('index');
+            var frame = wp.media({
+                title: 'セクション画像を選択',
+                button: { text: '画像をセット' },
+                multiple: false,
+                library: { type: 'image' }
+            });
+            frame.on('select', function(){
+                var att   = frame.state().get('selection').first().toJSON();
+                var thumb = att.sizes && att.sizes.thumbnail ? att.sizes.thumbnail.url : att.url;
+                $('#blog-img-preview-' + idx).attr('src', thumb).show();
+                $('#blog-img-id-' + idx).val(att.id);
+                $('.andfeel-blog-img-remove[data-index="' + idx + '"]').show();
+            });
+            frame.open();
+        });
+
+        $('.andfeel-blog-img-remove').on('click', function(e){
+            e.preventDefault();
+            var idx = $(this).data('index');
+            $('#blog-img-preview-' + idx).hide().attr('src', '');
+            $('#blog-img-id-' + idx).val('');
+            $(this).hide();
+        });
+    });
+    </script>
     <?php
 }
 
@@ -725,11 +786,20 @@ function andfeel_blog_structure_save( $post_id ) {
     for ( $i = 1; $i <= 3; $i++ ) {
         $h2_key   = "blog_section_h2_{$i}";
         $body_key = "blog_section_body_{$i}";
+        $img_key  = "blog_section_image_{$i}";
         if ( isset( $_POST[ $h2_key ] ) ) {
             update_post_meta( $post_id, $h2_key, sanitize_text_field( wp_unslash( $_POST[ $h2_key ] ) ) );
         }
         if ( isset( $_POST[ $body_key ] ) ) {
             update_post_meta( $post_id, $body_key, sanitize_textarea_field( wp_unslash( $_POST[ $body_key ] ) ) );
+        }
+        if ( isset( $_POST[ $img_key ] ) ) {
+            $img_val = absint( $_POST[ $img_key ] );
+            if ( $img_val > 0 ) {
+                update_post_meta( $post_id, $img_key, $img_val );
+            } else {
+                delete_post_meta( $post_id, $img_key );
+            }
         }
     }
 }
