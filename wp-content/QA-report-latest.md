@@ -1,6 +1,6 @@
 # Nightly QA Report
 
-**日時:** 2026-05-29 12:04 (UTC)
+**日時:** 2026-05-30 12:04 (UTC)
 **結果:** ⚠️ Issues Found
 
 ---
@@ -37,12 +37,14 @@
 ### サニタイズなしの $_GET / $_POST / $_REQUEST
 ✅ 問題なし
 
-`functions.php` 内に複数の `$_POST` 参照が存在するが、いずれも適切に処理済み:
+`functions.php` 内に複数の `$_POST` / `$_GET` 参照が存在するが、いずれも適切に処理済み:
 
-- **line 460, 591, 710** — nonce チェックの `isset()` ガード（値は読まない）
-- **line 467** — `sanitize_text_field( wp_unslash( $_POST[$key] ) )` でサニタイズ済み
-- **line 721** — `sanitize_textarea_field( wp_unslash( $_POST['blog_intro'] ) )` でサニタイズ済み
-- **lines 728, 731** — `sanitize_text_field` / `sanitize_textarea_field` + `wp_unslash` でサニタイズ済み
+- **L460, L591, L710** — `wp_verify_nonce()` + `sanitize_text_field( wp_unslash() )` による nonce 検証
+- **L467-468** — `sanitize_text_field( wp_unslash( $_POST[$key] ) )` でサニタイズ済み
+- **L596** — `sanitize_text_field( $_POST['works_gallery_ids'] )` でサニタイズ済み
+- **L721-732** — `sanitize_text_field` / `sanitize_textarea_field` + `wp_unslash` でサニタイズ済み
+- **L1008** — `sanitize_text_field( wp_unslash( $_POST['your-privacy'] ) )` でサニタイズ済み
+- **L1210** — `in_array( sanitize_text_field( wp_unslash( $_GET['post_type'] ) ), $post_types, true )` でサニタイズ + 厳密型チェック済み
 
 ---
 
@@ -54,9 +56,9 @@
 
 | ファイル | 行 | 内容 |
 |---------|-----|------|
-| assets/css/common.css | 243 | `visibility: hidden !important;` |
 | assets/css/blog.css | 71 | `width: 100% !important;` |
 | assets/css/blog.css | 72 | `height: 100% !important;` |
+| assets/css/common.css | 243 | `visibility: hidden !important;` |
 | assets/css/contact.css | 760 | `visibility: hidden !important;` |
 
 > `common.css:243` と `contact.css:760` はサードパーティ（jQuery Ripples / CF7）のスタイル上書きの可能性あり。`blog.css:71-72` は埋め込みコンテンツへの適用と推測。いずれも意図的なものか確認を推奨。
